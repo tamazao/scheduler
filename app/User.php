@@ -31,4 +31,11 @@ class User extends Authenticatable
     {
       return $this->hasMany(Meeting::class);
     }
+    public function Schedules()
+    {
+      return $this->hasManyThrough(
+         'App\Schedule', 'App\Meeting'
+       );
+
+    }
 }

@@ -1,0 +1,18 @@
+.MeetingStage{
+  display:  inline-block;
+}
+
+.meetingBox {
+  background-color: white;
+  margin: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #888888;
+  border-radius: 5px;
+  box-shadow: 5px 5px 2px #888888;
+}
+
+.meetingBox:hover{
+  background: #6e95d3;
+  color: black;
+}

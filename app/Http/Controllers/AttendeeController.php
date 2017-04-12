@@ -1,9 +1,13 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
 class AttendeeController extends Controller {
 
+  public function __construct()
+  {
+    $this->middleware('auth',['only'=>['index']]);
+  }
   /**
    * Display a listing of the resource.
    *
@@ -11,7 +15,7 @@ class AttendeeController extends Controller {
    */
   public function index()
   {
-    
+
   }
 
   /**
@@ -21,7 +25,7 @@ class AttendeeController extends Controller {
    */
   public function create()
   {
-    
+    return view('attendees.create');
   }
 
   /**
@@ -31,7 +35,7 @@ class AttendeeController extends Controller {
    */
   public function store()
   {
-    
+
   }
 
   /**
@@ -42,7 +46,7 @@ class AttendeeController extends Controller {
    */
   public function show($id)
   {
-    
+
   }
 
   /**
@@ -53,7 +57,7 @@ class AttendeeController extends Controller {
    */
   public function edit($id)
   {
-    
+
   }
 
   /**
@@ -64,7 +68,7 @@ class AttendeeController extends Controller {
    */
   public function update($id)
   {
-    
+
   }
 
   /**
@@ -75,9 +79,9 @@ class AttendeeController extends Controller {
    */
   public function destroy($id)
   {
-    
+
   }
-  
+
 }
 
 ?>

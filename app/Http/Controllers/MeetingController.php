@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 
 class MeetingController extends Controller {
 
+  public function __construct()
+  {
+    $this->middleware('auth');
+
+  }
+
+
   /**
    * Display a listing of the resource.
    *
@@ -13,16 +20,8 @@ class MeetingController extends Controller {
    */
   public function index()
   {
-      if ( \Auth::check() )
-      {
-        $user = \Auth::user();
-        $user->load('Meetings')->get();
-        return view('meetings.list',  ['meetings'=> $user->meetings]);
-      }
-      else
-      {
-        return view('auth.login');
-      }
+      $user = \Auth::user();
+      return view('meetings.list',  ['meetings'=> $user->meetings, 'schedules' => $user->schedules]);
   }
 
   /**

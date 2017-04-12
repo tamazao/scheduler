@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class ScheduleController extends Controller {
 
+  public function __construct()
+  {
+    $this->middleware('auth');
+    $this->middleware('meetingOwnership');
+  }
   /**
    * Display a listing of the resource.
    *
@@ -13,7 +18,7 @@ class ScheduleController extends Controller {
    */
   public function index()
   {
-
+    
   }
 
   /**
@@ -21,18 +26,9 @@ class ScheduleController extends Controller {
    *
    * @return Response
    */
-  public function create($meetingID)
+  public function create($meeting_id)
   {
-    if ( \Auth::check() )
-    {
-      $user = \Auth::user();
-      return view('schedules.create', ['meetingID' => $meetingID]);
-
-    }
-    else
-    {
-      return view('auth.login');
-    }
+    return view('schedules.create', ['meetingID' => $meeting_id]);
   }
 
   /**
@@ -42,14 +38,10 @@ class ScheduleController extends Controller {
    */
   public function store(Request $request)
   {
-    if (\Auth::check() )
-    {
-      $schedule = new \App\schedule;
-      $schedule->fill($request->all());
-      $schedule->save();
-      return redirect()->back()->with('message','Schedule Added');
-    }
-
+    $schedule = new \App\schedule;
+    $schedule->fill($request->all());
+    $schedule->save();
+    return redirect()->back()->with('message','Schedule Added');
   }
 
   /**

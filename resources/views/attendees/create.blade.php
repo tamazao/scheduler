@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-  <div id="NewSchedule">
-    @include('schedules.forms.new')
+  <div id="NewAttendee">
+    @include('attendees.forms.new')
   </div>
 @endsection
