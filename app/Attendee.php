@@ -14,11 +14,11 @@ class Attendee extends Model {
 
 	protected $dates = ['deleted_at'];
 	protected $fillable = array('FirstName', 'LastName', 'Attended', 'schedule_id');
-	protected $visible = array('FirstName', 'LastName', 'Attended', 'schedule_id');
+	protected $visible = array('FirstName', 'LastName', 'Attended');
 
 	public function Schedules()
 	{
-		return $this->belongsToMany('Schedule');
+		return $this->belongsTo('Schedule');
 	}
 
 }

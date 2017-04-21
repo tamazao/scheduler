@@ -21,9 +21,9 @@ class Schedule extends Model {
 		return $this->belongsToMany('Meeting');
 	}
 
-	public function Attendies()
+	public function Attendees()
 	{
-		return $this->hasMany('Attendee');
+		return $this->hasMany('App\Attendee');
 	}
 
 }

@@ -12,7 +12,6 @@ class MeetingController extends Controller {
 
   }
 
-
   /**
    * Display a listing of the resource.
    *
@@ -21,7 +20,11 @@ class MeetingController extends Controller {
   public function index()
   {
       $user = \Auth::user();
-      return view('meetings.list',  ['meetings'=> $user->meetings, 'schedules' => $user->schedules]);
+      $meetings = \App\Meeting::where('user_id', '=', $user->id)->paginate(12);
+      return view('meetings.list',  ['meetings'=> $meetings
+                                    ,'schedules' => $user->schedules
+                                    ,'user_id' => $user->id
+                                    ]);
   }
 
   /**
@@ -31,7 +34,8 @@ class MeetingController extends Controller {
    */
   public function create()
   {
-    return view('meetings.create');
+    $user = \Auth::user();
+    return view('meetings.create', ['user_id' => $user->id]);
   }
 
   /**
@@ -46,7 +50,8 @@ class MeetingController extends Controller {
     $meeting->fill($request->all());
     $meeting->user_id = $request->user_id;
     $meeting->save();
-    return redirect()->back()->with('message','Meeting Added');
+    \Session::flash('alert-success','Meeting has been added');
+    return redirect()->back();
   }
 
   /**
@@ -90,7 +95,9 @@ class MeetingController extends Controller {
    */
   public function destroy($id)
   {
-
+    $meeting = App\Meeting::find($id);
+    $meeting->delete();
+    return redirect()->back();
   }
 
 }

@@ -23,3 +23,5 @@ Route::resource('schedule','ScheduleController');
 Route::resource('attendee','AttendeeController');
 
 Route::get('{meeting_id}/schedule/create/', 'ScheduleController@create');
+Route::get('{schedule_id}/attendee/create/','AttendeeController@create');
+Route::get('{schedule_id}/attendee/', 'AttendeeController@index');

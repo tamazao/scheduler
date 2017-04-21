@@ -1,18 +1,106 @@
-.MeetingStage{
-  display:  inline-block;
+.meetingNavigation{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  position: -ms-align-self: baseline;
+  align-self: baseline ;
+  max-height: 45px;
+  margin-bottom: 6px;
+
+}
+
+.pagination{
+  margin: 0px;
+  max-height: 35px;
+}
+
+#meetingList{
+  position: absolute;
+  background-color: #e8eff2;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  margin: auto;
+}
+
+#MeetingStage{
+  display:  flex;
+  flex-wrap: wrap;
+  align-items: space-around;
 }
 
 .meetingBox {
   background-color: white;
-  margin: 10px;
-  border-style: solid;
+  margin: 6px;
+
   border-width: 1px;
   border-color: #888888;
   border-radius: 5px;
-  box-shadow: 5px 5px 2px #888888;
+  width: 30%;
+  padding: 0px;
 }
 
 .meetingBox:hover{
-  background: #6e95d3;
+  background: #3097d1;
   color: black;
+}
+
+.meetingBox-inactive{
+  background:#777475;
+  color:darkgray;
+
+}
+
+.meetingBox .icons{
+  display:flex;
+  justify-content: flex-end;
+}
+
+.icons .close{
+  margin-right: 6px;
+}
+
+.icons .close:hover{
+  color:white;
+}
+
+.scheduleBox{
+  text-align: left;
+}
+
+.meetingBox-New{
+  display: flex;
+  -ms-align-items: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.newMeeting{
+  font-size: 42px;
+  font-weight: bold;
+}
+
+
+.btn{
+  box-sizing:border-box;
+  display: flex;
+  -ms-align-items: center;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #454647;
+  color: white;
+  max-height: 35px;
+  max-width: 35px;
+  margin-left: 6px;
+
+}
+
+.btn:hover{
+  background-color: #3097d1;
+  color: black;
+}
+
+.btn-newMeeting{
+    font-size: 22px;
+    font-weight: bold;
 }

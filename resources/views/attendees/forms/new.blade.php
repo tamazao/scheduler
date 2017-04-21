@@ -9,14 +9,8 @@
 			{!! Form::text('LastName') !!}
 		</li>
 		<li>
-			{!! Form::label('Attended', 'Attended:') !!}
-			{!! Form::text('Attended') !!}
-		</li>
-		<li>
-			{!! Form::label('schedule_id', 'Schedule_id:') !!}
-			{!! Form::text('schedule_id') !!}
-		</li>
-		<li>
+			{!! Form::hidden('Attended', '0') !!}
+			{!! Form::hidden('schedule_id', $schedule_id) !!}
 			{!! Form::submit() !!}
 		</li>
 	</ul>

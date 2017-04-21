@@ -23,7 +23,7 @@ class Meeting extends Model {
 
 	public function Users()
 	{
-		return $this->belongsToMany('User');
+		return $this->belongsTo('User');
 	}
 
 }

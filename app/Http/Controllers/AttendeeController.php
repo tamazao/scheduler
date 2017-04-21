@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 class AttendeeController extends Controller {
 
   public function __construct()
@@ -13,9 +15,13 @@ class AttendeeController extends Controller {
    *
    * @return Response
    */
-  public function index()
+  public function index($schedule_id)
   {
 
+      $schedule = \App\Schedule::find($schedule_id);
+      $meeting = \App\Meeting::find($schedule->meeting_id);
+      echo $schedule;
+      echo $meeting;
   }
 
   /**
@@ -23,9 +29,13 @@ class AttendeeController extends Controller {
    *
    * @return Response
    */
-  public function create()
+  public function create($schedule_id)
   {
-    return view('attendees.create');
+    $schedule = \App\Schedule::find($schedule_id);
+    if ($schedule->MaxAttendies > $schedule->Attendees->count())
+    {
+        return view('attendees.create', ['schedule_id' => $schedule_id]);
+    }
   }
 
   /**
@@ -33,9 +43,14 @@ class AttendeeController extends Controller {
    *
    * @return Response
    */
-  public function store()
+  public function store(Request $request)
   {
+      $attendee = new \App\Attendee;
+      $attendee->fill($request->all());
 
+
+      $attendee->save();
+      return redirect()->back()->with('message','You\'ve been added');
   }
 
   /**
